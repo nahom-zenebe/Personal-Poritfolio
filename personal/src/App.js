@@ -1,9 +1,12 @@
-import './index.css'
+import Navbar from "./components/Navbar";
+import Homepage from "./pages/Homepage";
 function App() {
   return (
     <div>
 
-      <h2 className="text-center"> oekodkoe</h2>
+   < Navbar/>
+   <Homepage/>
+  
       
     </div>
   );
