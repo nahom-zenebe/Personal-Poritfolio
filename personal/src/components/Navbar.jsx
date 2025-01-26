@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import Homepage from "../pages/Homepage";
+import Projectpage from "../pages/Projectpage"
+import Aboutpage from "../pages/Projectpage"
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [activeLink, setActiveLink] = useState('home');
@@ -24,25 +28,25 @@ function Navbar() {
             onClick={() => handleLinkClick('home', 0)}
             className={`relative cursor-pointer ml-5 text-white font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'home' ? 'text-blue-500' : ''}`}
           >
-            Home
+           Home
           </li>
           <li
             onClick={() => handleLinkClick('project', 1)}
             className={`relative cursor-pointer text-white ml-5 font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'project' ? 'text-blue-500' : ''}`}
           >
-            Project
+     About
           </li>
           <li
             onClick={() => handleLinkClick('service', 2)}
             className={`relative cursor-pointer text-white ml-5 font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'service' ? 'text-blue-500' : ''}`}
           >
-            Service
+    Project
           </li>
           <li
             onClick={() => handleLinkClick('about', 3)}
             className={`relative cursor-pointer text-white ml-5 font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'about' ? 'text-blue-500' : ''}`}
           >
-            About
+            service
           </li>
         </ul>
 
