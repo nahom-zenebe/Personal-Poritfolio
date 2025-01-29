@@ -2,7 +2,7 @@ import React from 'react';
 
 function AboutPage() {
   return (
-    <div className="bg-black h-screen text-white flex flex-col justify-center items-center">
+    <div className="bg-black h-lvh text-white flex flex-col justify-center items-center">
       <h1 className="text-4xl font-bold mb-4">About Me</h1>
       <p className="text-lg text-center max-w-2xl mb-8">
         Hello, I'm Nahom Zenebe, a Software Engineering student at Addis Ababa University.
