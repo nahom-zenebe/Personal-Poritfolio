@@ -21,8 +21,8 @@ useGSAP(() => {
 
   return (
     <div className="bg-gray-700 text-white py-10 px-5">
- 
-      <div className="text-center mb-8">
+   <div className='flex flex-row'>
+      <div className="text-center mb-8 ml-5 mt-10">
         <h1 className="text-2xl mr-5 font-bold">Stay connected with me</h1>
         <form className="mt-4 flex justify-center">
         <input
@@ -36,31 +36,31 @@ useGSAP(() => {
         </form>
       </div>
 
-      <div className="grid grid-cols-1 ml-56 sm:grid-cols-3 gap-6 text-center sm:text-left">
+      <div className=" flex flex-row ml-28 sm:grid-cols-3 gap-6 text-center sm:text-left">
        
-        <div >
+        <div  className='ml-2'>
           <h2 className="text-lg  font-semibold mb-4">Services</h2>
           <ul className="space-y-2">
-            <li>Website Development</li>
-            <li>Mobile App Development</li>
-            <li>Web App Development</li>
-            <li>UI/UX Design</li>
-            <li>Web Deployment</li>
+            <li className='hover:text-blue-200 hover:underline'>Website Development</li>
+            <li className='hover:text-blue-200 hover:underline'>Mobile App Development</li>
+            <li className='hover:text-blue-200 hover:underline'>Web App Development</li>
+            <li className='hover:text-blue-200 hover:underline'>UI/UX Design</li>
+            <li className='hover:text-blue-200 hover:underline'>Web Deployment</li>
           </ul>
         </div>
 
         
-        <div>
+        <div  className='ml-12'>
           <h2 className="text-lg font-semibold mb-4">Contact Me</h2>
           <ul className="space-y-2">
-            <li>Email: yourname@example.com</li>
-            <li>Phone: +251954907558</li>
-            <li>Address: Addis Ababa, Ethiopia</li>
+            <li className='hover:text-blue-200 hover:underline'>Email: nahomzenebe123@gmail.com</li>
+            <li className='hover:text-blue-200 hover:underline'>Phone: +251954907558</li>
+            <li className='hover:text-blue-200 hover:underline'>Address: Addis Ababa, Ethiopia</li>
           </ul>
         </div>
 
     
-        <div>
+        <div  className='ml-12'>
           <h2 className="text-lg font-semibold mb-4">Follow Me</h2>
           <ul className="space-y-2 ml-6">
             <li>
@@ -81,11 +81,11 @@ useGSAP(() => {
           </ul>
         </div>
       </div>
-
+      </div>
 
       <div className="mt-10 text-center text-sm text-white">
       <hr className='mb-4 text-gray-200'></hr>
-        © {new Date().getFullYear()} Nahom Zenebe. All Rights Reserved.
+      <h1 className=' text-lg mt-8'>  © {new Date().getFullYear()} Nahom Zenebe. All Rights Reserved.</h1>
       </div>
     </div>
   );

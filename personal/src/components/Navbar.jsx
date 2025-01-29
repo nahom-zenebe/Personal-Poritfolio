@@ -28,32 +28,32 @@ function Navbar() {
             onClick={() => handleLinkClick('home', 0)}
             className={`relative cursor-pointer ml-5 text-white font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'home' ? 'text-blue-500' : ''}`}
           >
-           Home
+          <Link to='/'> Home</Link>
           </li>
           <li
             onClick={() => handleLinkClick('project', 1)}
             className={`relative cursor-pointer text-white ml-5 font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'project' ? 'text-blue-500' : ''}`}
           >
-     About
+    <Link to='/About'> About</Link>
           </li>
           <li
             onClick={() => handleLinkClick('service', 2)}
             className={`relative cursor-pointer text-white ml-5 font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'service' ? 'text-blue-500' : ''}`}
           >
-    Project
+     <Link to='/Project'> Project</Link>
           </li>
           <li
             onClick={() => handleLinkClick('about', 3)}
             className={`relative cursor-pointer text-white ml-5 font-semibold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:bg-gray-700 ${activeLink === 'about' ? 'text-blue-500' : ''}`}
           >
-            service
+         <Link to='/service'> Service</Link>
           </li>
         </ul>
 
         <div
           className="absolute bottom-2 left-0 border-2 border-blue-500 w-32 h-12 rounded-full transition-all ml-12 duration-500"
           style={{
-            transform: `translateX(${indicatorPosition * 130}px)`, 
+            transform: `translateX(${indicatorPosition * 120}px)`, 
           }}
         />
       </div>

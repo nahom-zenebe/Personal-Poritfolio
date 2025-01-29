@@ -1,42 +1,34 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import project1 from '../images/1.avif'
+import project2 from '../images/2.avif'
+import project3 from '../images/3.avif'
+import project4 from '../images/4.avif'
+import project5 from '../images/5.avif'
+import project6 from '../images/6.avif'
+import { Plus, Github, Eye } from 'lucide-react';
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectPage() {
-  const projectRefs = useRef([]);
-
+function Projectpage() {
   useEffect(() => {
-    // GSAP animations for horizontal scrolling
-    const sections = gsap.utils.toArray('.project-section');
-
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.projects-container',
-        pin: true,
-        scrub: 1,
-        snap: 1 / (sections.length - 1),
-        end: () => '+=' + document.querySelector('.projects-container').offsetWidth,
-      },
-    });
-
-    // Intersection Observer for project animations
-    projectRefs.current.forEach((project, index) => {
-      gsap.from(project, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        scrollTrigger: {
-          trigger: project,
-          start: 'top 80%',
-          end: 'top 50%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+    gsap.utils.toArray('.project-card').forEach((card) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     });
   }, []);
 
@@ -45,46 +37,31 @@ function ProjectPage() {
       <h1 className="text-5xl font-extrabold text-white mb-10">My Projects</h1>
 
       <div className="projects-container w-full overflow-hidden">
-        <div className="flex w-max">
-          {[...Array(4)].map((_, index) => (
-            <div
-              key={index}
-              ref={(el) => (projectRefs.current[index] = el)}
-              className="project-section w-screen flex-shrink-0 px-8"
-            >
-              <div className="bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
-                <img
-                  src="https://via.placeholder.com/800x400"
-                  alt={`Project ${index + 1}`}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h2 className="text-2xl font-semibold mb-3 text-teal-400">
-                    Project Title {index + 1}
-                  </h2>
-                  <p className="text-gray-300 mb-4">
-                    This is a brief description of the project. It could be about a web app, a tool,
-                    or something you've built using your skills. You can also provide links to the
-                    project or its repository.
-                  </p>
-                  <a
-                    href="https://github.com/your-project"
-                    className="text-teal-500 hover:text-teal-400 underline"
-                  >
-                    View on GitHub
-                  </a>
-                </div>
+        <div className="grid grid-cols-3 ml-16 gap-16 items-center">
+          {[project1, project2, project3, project4, project5].map((project, index) => (
+            <div key={index} className="project-card bg-gray-800 w-96 rounded-lg overflow-hidden shadow-2xl relative group">
+              <img src={project} className="project-image w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition-opacity duration-300">
+                <a href="#" className="mx-3 text-white p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-all">
+                  <Github size={24} />
+                </a>
+                <a href="#" className="mx-3 text-white p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-all">
+                  <Eye size={24} />
+                </a>
               </div>
             </div>
           ))}
+
+          <div className="bg-white flex justify-center items-center w-96 min-h-64 rounded-lg overflow-hidden shadow-2xl">
+            <div className='block text-center'>
+              <Plus className='text-black w-24 h-40' />
+              <h1 className='text-black font-bold'>Your project</h1>
+            </div>
+          </div>
         </div>
       </div>
-
-      <button className="mt-10 bg-teal-500 text-white py-3 px-8 rounded-md hover:bg-teal-600 transition-all">
-        See More Projects
-      </button>
     </div>
   );
 }
 
-export default ProjectPage;
+export default Projectpage;
