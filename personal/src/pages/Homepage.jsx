@@ -5,34 +5,9 @@ import { motion } from 'framer-motion';
 
 function Homepage() {
   return (
-    <div className='relative flex flex-col items-center pt-20 justify-center text-center bg-gradient-to-r h-full from-blue-900 via-blue-600 to-blue-900 overflow-hidden'>
+    <div className='relative flex flex-col items-center pt-20 justify-center text-center bg-gradient-to-r h-full from-black via-blue-800 to-blue-900 overflow-hidden'>
 
-      <div className='absolute inset-0 overflow-hidden'>
-        {[...Array(30)].map((_, index) => (
-          <motion.div
-            key={index}
-            className='absolute rounded-full bg-blue-600'
-            style={{
-              width: `${Math.random() * 50 + 20}px`,
-              height: `${Math.random() * 50 + 20}px`,
-              left: `${Math.random() * 100}vw`,
-              top: `${Math.random() * 100}vh`,
-            }}
-            initial={{ opacity: 0, y: 0 }}
-            animate={{
-              opacity: [0, 1, 0],
-              y: [-100, 100],
-              x: [0, Math.random() * 200 - 100],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              repeat: Infinity,
-              ease: 'linear',
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
+      
 
 
       <motion.img
@@ -48,7 +23,7 @@ function Homepage() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className='mt-6 text-white mb-10 px-4 text-md w-5/6 max-w-2xl z-10'
+        className='mt-6 text-white mb-10 px-4 text-xl text-md  max-w-2xl z-10'
       >
         Hi! I'm Nahom Zenebe, a passionate Software Engineering student at Addis Ababa University 🎓. I specialize in full-stack development with a focus on the MERN stack 🖥️. I love solving real-world problems using technology, especially in the areas of education and accessibility.
       </motion.p>
