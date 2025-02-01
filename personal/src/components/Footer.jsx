@@ -1,5 +1,5 @@
 import React from 'react';
-import { MoveRight,Twitter,Github,Linkedin } from 'lucide-react';
+import { MoveRight,Twitter,Github,Linkedin,Mail } from 'lucide-react';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -78,6 +78,11 @@ useGSAP(() => {
               <Twitter id='box' className='hover:text-blue-400'/>
               </a>
             </li>
+            <li>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer">
+            <Mail className='hover:text-blue-400' />
+            </a>
+              </li>
           </ul>
         </div>
       </div>

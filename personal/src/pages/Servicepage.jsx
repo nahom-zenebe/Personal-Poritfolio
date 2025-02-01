@@ -69,7 +69,7 @@ function ServicePage() {
   };
 
   return (
-    <div className='bg-gray-700'>
+    <div className='bg-gray-700 '>
  <div className="bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 min-h-screen text-gray-100 flex flex-col items-center justify-center py-20 rounded-b-3xl">
       <h1 className="text-5xl font-extrabold text-white mb-16">Our Services</h1>
 
@@ -77,7 +77,7 @@ function ServicePage() {
 
 
       <div className="grid grid-cols-2 mb-24 md:grid-cols-3 lg:grid-cols-4 gap-12 w-full max-w-7xl px-4">
-        {/* Web Development Service */}
+        
         <div
           className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
             selectedService === 0

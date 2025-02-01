@@ -33,7 +33,8 @@ function Projectpage() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 min-h-screen text-gray-100 flex flex-col items-center justify-center py-20">
+    <div className='bg-black h-full w-full'>
+    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-600 min-h-screen text-gray-100 flex flex-col items-center justify-center py-20 ">
       <h1 className="text-5xl font-extrabold text-white mb-10">My Projects</h1>
 
       <div className="projects-container w-full overflow-hidden">
@@ -60,6 +61,7 @@ function Projectpage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
