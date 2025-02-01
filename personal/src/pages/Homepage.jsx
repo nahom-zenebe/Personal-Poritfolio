@@ -32,7 +32,7 @@ function Homepage() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className='text-white mb-10 px-4 text-lg max-w-2xl z-10'
       >
-        MERN Stack Developer | Software Engineering Student | Passionate about building impactful digital experiences.
+        Full Stack Developer | Software Engineering Student | AI & Machine Learning Enthusiast.
       </motion.p>
       
       {/* CTA Buttons */}

@@ -12,6 +12,7 @@
     "@gsap/react": "^2.1.2",
     "@mui/icons-material": "^6.4.1",
     "@mui/material": "^6.4.1",
+    "@shadcn/ui": "^0.0.4",
     "@tailwindcss/cli": "^4.0.0",
     "autoprefixer": "^10.4.20",
     "cra-template": "1.2.0",
