@@ -45,8 +45,15 @@ function Homepage() {
         <button className='px-6 py-3 bg-black flex items-center text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105'>
           Let's Connect <UserRoundPlus className='ml-2' />
         </button>
-        <button className='flex items-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105'>
-          Download CV <ArrowDownToLine className='ml-2' />
+        <button  className='flex items-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105'>
+        <a
+  href="./public/Resume.pdf"
+  download
+  className="flex items-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105"
+>
+  Download CV <ArrowDownToLine className="ml-2" />
+</a>
+
         </button>
       </motion.div>
 

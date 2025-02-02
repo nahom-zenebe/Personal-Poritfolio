@@ -70,92 +70,110 @@ function ServicePage() {
 
   return (
     <div className='bg-gray-700 '>
- <div className="bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 min-h-screen text-gray-100 flex flex-col items-center justify-center py-20 rounded-b-3xl">
-      <h1 className="text-5xl font-extrabold text-white mb-16">Our Services</h1>
+ <div className="bg-gradient-to-b  from-gray-500 via-gray-400 to-gray-600 min-h-screen text-gray-100 flex flex-col items-center justify-center py-20 rounded-b-3xl">
+  <h1 className="text-5xl  font-extrabold text-white mb-16">Our Services</h1>
 
-
-
-
-      <div className="grid grid-cols-2 mb-24 md:grid-cols-3 lg:grid-cols-4 gap-12 w-full max-w-7xl px-4">
-        
-        <div
-          className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-            selectedService === 0
-              ? 'transform scale-110 z-10'
-              : selectedService !== null
-              ? 'opacity-50 grayscale transform scale-90'
-              : ''
-          }`}
-          onClick={() => handleServiceClick(0)}
-        >
-          <div className="flex flex-col items-center justify-center">
-          <img className='w-full' src={service1}></img>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Development</h3>
-            <p className="text-gray-600 text-center">
-              Build dynamic, interactive, and scalable websites using the latest technologies like JavaScript and React.
-            </p>
-          </div>
+  <div className="grid mb-24 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full max-w-7xl px-4">
+ 
+    <div
+      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
+        selectedService === 0 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
+      }`}
+      onClick={() => handleServiceClick(0)}
+    >
+      <div className="flex flex-col items-center justify-center">
+        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
+          <img src={service1} alt="Web Development" className="object-cover w-full h-full" />
         </div>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Development</h3>
+        <p className="text-gray-600 text-center">
+          Build dynamic, interactive, and scalable websites using the latest technologies like JavaScript and React.
+          Tech Stack: React.js, Next.js, Node.js, Express.js, MongoDB, SQL, Firebase, Tailwind CSS
+        </p>
+      </div>
+    </div>
 
-        {/* Web Design Service */}
-        <div
-          className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-            selectedService === 1
-              ? 'transform scale-110 z-10'
-              : selectedService !== null
-              ? 'opacity-50 grayscale transform scale-90'
-              : ''
-          }`}
-          onClick={() => handleServiceClick(1)}
-        >
-          <div className="flex flex-col items-center justify-center">
-            <img src={service1}></img>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Design</h3>
-            <p className="text-gray-600 text-center">
-              Create visually stunning and user-friendly website layouts, designs, and interfaces with a focus on usability.
-            </p>
-          </div>
-        </div>
 
-        {/* App Development Service */}
-        <div
-          className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-            selectedService === 2
-              ? 'transform scale-110 z-10'
-              : selectedService !== null
-              ? 'opacity-50 grayscale transform scale-90'
-              : ''
-          }`}
-          onClick={() => handleServiceClick(2)}
-        >
-          <div className="flex flex-col items-center justify-center">
-          <img src={service2}></img>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">App Development</h3>
-            <p className="text-gray-600 text-center">
-              Create mobile applications for Android and iOS, providing seamless experiences across devices and platforms.
-            </p>
-          </div>
+    <div
+      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
+        selectedService === 1 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
+      }`}
+      onClick={() => handleServiceClick(1)}
+    >
+      <div className="flex flex-col items-center justify-center">
+        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
+          <img src={service1} alt="Web Design" className="object-cover w-full h-full" />
         </div>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Design</h3>
+        <p className="text-gray-600 text-center">
+          Create visually stunning and user-friendly website layouts, designs, and interfaces with a focus on usability.
+          Tech stack: Figma
+        </p>
+      </div>
+    </div>
 
-        {/* Web Deployment Service */}
-        <div
-          className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-            selectedService === 3
-              ? 'transform scale-110 z-10'
-              : selectedService !== null
-              ? 'opacity-50 grayscale transform scale-90'
-              : ''
-          }`}
-          onClick={() => handleServiceClick(3)}
-        >
-          <div className="flex flex-col items-center justify-center">
-          <img src={service3}></img>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Deployment</h3>
-            <p className="text-gray-600 text-center">
-              Deploy websites and web applications to production with optimal configurations and scalability.
-            </p>
-          </div>
+ 
+    <div
+      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
+        selectedService === 2 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
+      }`}
+      onClick={() => handleServiceClick(2)}
+    >
+      <div className="flex mb-10 flex-col items-center justify-center">
+        <div className="w-full  mb-6 h-40  overflow-hidden rounded-t-2xl">
+          <img src={service2} alt="App Development" className="object-cover w-full h-full" />
         </div>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-2">App Development</h3>
+        <p className="text-gray-600 text-center">
+          Create mobile applications for Android and iOS, providing seamless experiences across devices and platforms.
+          Tech Stack: Flutter (Dart), Firebase, Node.js, Express.js, MongoDB, REST APIs
+        </p>
+      </div>
+    </div>
+
+   
+    <div
+      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
+        selectedService === 3 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
+      }`}
+      onClick={() => handleServiceClick(3)}
+    >
+      <div className="flex flex-col items-center justify-center">
+        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
+          <img src={service3} alt="Frontend Development" className="object-cover w-full h-full" />
+        </div>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Frontend Development</h3>
+        <p className="text-gray-600 text-center">
+          Creating visually stunning, user-friendly, and high-performance interfaces that engage users and enhance their experience.
+          Tech stack: HTML, CSS, JavaScript, React.js, Next.js, Tailwind CSS, Redux, TypeScript
+        </p>
+      </div>
+    </div>
+
+ 
+    <div
+      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
+        selectedService === 4 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
+      }`}
+      onClick={() => handleServiceClick(4)}
+    >
+      <div className="flex flex-col items-center justify-center">
+        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
+          <img src={service3} alt="Backend Development" className="object-cover w-full h-full" />
+        </div>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Backend Development</h3>
+        <p className="text-gray-600 text-center">
+          Crafting robust, secure, and scalable server-side solutions to power modern web applications.
+          Tech stack: Node.js, Express.js, Nest.js, MongoDB, SQL, Redis, Firebase
+        </p>
+      </div>
+    </div>
+  
+
+
+
+
+      
 
         
     

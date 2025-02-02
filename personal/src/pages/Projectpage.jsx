@@ -64,13 +64,13 @@ function Portfolio() {
             key={index}
             className="bg-gray-800 p-6 rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:bg-gray-700"
           >
-            {/* Header Section */}
+          
             <header className="text-center mb-4">
               <h2 className="text-2xl font-bold text-blue-400 mb-2">{project.title}</h2>
               <p className="text-lg text-gray-300">{project.description}</p>
             </header>
 
-            {/* Image Section */}
+          
             <div className="relative mb-4">
               <img
                 src={project.imageSrc}
@@ -82,7 +82,7 @@ function Portfolio() {
               />
             </div>
 
-            {/* Technology Icons */}
+            
             <div className="flex justify-center gap-4 mb-4">
               {project.technologies.map((tech, index) => (
                 <div
@@ -95,7 +95,7 @@ function Portfolio() {
               ))}
             </div>
 
-            {/* Links Section */}
+           
             <div className="flex justify-between items-center mb-4">
               <a
                 href={project.githubLink}

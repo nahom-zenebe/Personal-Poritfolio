@@ -4,7 +4,7 @@ function AboutPage() {
   const aboutCardsRef = useRef([]);
 
   useEffect(() => {
-    // Intersection Observer for scroll-triggered animations
+   
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -64,10 +64,10 @@ function AboutPage() {
       <div className="w-full max-w-6xl px-4">
         <h2 className="text-3xl font-bold text-center mb-12">About My Journey</h2>
         <div className="relative">
-          {/* Connecting Line */}
+         
           <div className="absolute left-1/2 h-full w-1 bg-blue-500 transform -translate-x-1/2 z-0"></div>
 
-          {/* About Cards */}
+      
           {aboutMeInfo.map((info, index) => (
             <div
               key={index}
