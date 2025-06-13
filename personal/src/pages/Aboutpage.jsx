@@ -1,91 +1,149 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-function AboutPage() {
-  const aboutCardsRef = useRef([]);
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" }
+};
 
-  useEffect(() => {
-   
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-x-0');
-            entry.target.classList.remove('opacity-0', 'translate-x-10', '-translate-x-10');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    aboutCardsRef.current.forEach((card) => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const aboutMeInfo = [
-    {
-      title: 'About Me',
-      description: 'My name is Nahom Zenebe, a third-year Software Engineering student at Addis Ababa University. I am a passionate full-stack developer with a focus on the MERN stack (MongoDB, Express.js, React, Node.js). I aim to use my skills to solve real-world problems, particularly in the fields of education and accessibility.',
-    },
-    {
-      title: 'Passionate About Education',
-      description: 'I am deeply passionate about leveraging technology to enhance education and accessibility, particularly for underserved communities. I believe that everyone should have access to quality education, regardless of their background or location. I have worked on several projects that aim to bridge the gap in education through tech solutions.',
-      bgColor: 'bg-gray-700',
-    },
-    {
-      title: 'Full-Stack Developer',
-      description: 'I specialize in full-stack development, with experience in both front-end and back-end technologies. I enjoy building dynamic, user-friendly applications and systems that are scalable and efficient. I actively participate in hackathons to challenge myself, solve real-world problems, and collaborate with others to come up with innovative solutions.',
-      bgColor: 'bg-gray-800',
-    },
-    {
-      title: 'Data Structures & Algorithms',
-      description: 'I am continuously learning and mastering Data Structures and Algorithms (DSA) to enhance my problem-solving skills. Understanding DSA is crucial for developing efficient applications and excelling in coding interviews. I regularly practice problems on platforms like LeetCode, HackerRank, and Codeforces to sharpen my abilities.',
-      bgColor: 'bg-gray-700',
-    },
-    {
-      title: 'AI & Machine Learning Enthusiast',
-      description: 'In addition to full-stack development, I am very interested in AI and machine learning. I spend my free time exploring machine learning algorithms, working on projects that integrate AI, and expanding my understanding of how these technologies can be applied to real-world problems, especially in fields like healthcare, education, and accessibility.',
-      bgColor: 'bg-gray-800',
-    },
-    {
-      title: 'Free Time & Hobbies',
-      description: 'In my free time, I enjoy playing chess, which sharpens my problem-solving and strategic thinking skills. I also like to watch movies, explore new tech trends, and spend time with friends. I find balance through these activities and enjoy engaging in meaningful conversations about technology, innovation, and life.',
-      bgColor: 'bg-gray-700',
-    },
-  ];
-  
+const TimelineItem = ({ title, description, date, icon: Icon, index }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div className="bg-black min-h-screen text-white flex flex-col items-center py-20">
-
-      
-
- 
-      <div className="w-full max-w-6xl px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">About My Journey</h2>
-        <div className="relative">
-         
-          <div className="absolute left-1/2 h-full w-1 bg-blue-500 transform -translate-x-1/2 z-0"></div>
-
-      
-          {aboutMeInfo.map((info, index) => (
-            <div
-              key={index}
-              ref={(el) => (aboutCardsRef.current[index] = el)}
-              className={`relative z-10 opacity-0 transition-all duration-500 ease-in-out ${
-                index % 2 === 0
-                  ? 'translate-x-10 self-start ml-4 md:ml-0 md:self-end mr-auto'
-                  : '-translate-x-10 self-end mr-4 md:mr-0 md:self-start ml-auto'
-              }`}
-              style={{ marginBottom: '6rem', maxWidth: '45%' }}
-            >
-              <div className={`${info.bgColor} p-6 rounded-lg shadow-lg`}>
-                <h3 className="text-2xl font-bold mb-2">{info.title}</h3>
-                <p className="text-gray-400 mb-4">{info.description}</p>
-              </div>
-            </div>
-          ))}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      className={`relative flex items-center ${
+        index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'
+      } mb-12`}
+    >
+      <div className="flex-1 md:text-right md:pr-8">
+        <div className={`p-6 rounded-lg shadow-xl ${
+          index % 2 === 0 ? 'bg-blue-600/10' : 'bg-gray-800/50'
+        } backdrop-blur-sm border border-gray-700/50`}>
+          <h3 className="text-xl font-bold text-blue-400 mb-2">{title}</h3>
+          <p className="text-gray-300">{description}</p>
+          <span className="inline-block mt-2 text-sm text-gray-400">{date}</span>
         </div>
+      </div>
+      
+      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600/20 border-2 border-blue-500/50 z-10">
+        <Icon className="w-6 h-6 text-blue-400" />
+      </div>
+      
+      <div className="hidden md:block flex-1" />
+    </motion.div>
+  );
+};
+
+function AboutPage() {
+  const timelineData = [
+    {
+      title: "Software Engineering Student",
+      description: "Currently pursuing a degree in Software Engineering at Addis Ababa University.",
+      date: "2023 - Present",
+      icon: ({ className }) => (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      )
+    },
+    {
+      title: "Open source contributor",
+      description: "contributing in different reposiotry like forem, zerotomastery ",
+      date: "2024 - Present",
+      icon: ({ className }) => (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      )
+    },
+    {
+      title: "Full Stack Developer at Nile Technology",
+      description: "Developing a full stack school managment system with mern stack",
+      date: "2023 - Present",
+      icon: ({ className }) => (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      )
+    },
+    {
+      title: "Academic project",
+      description: "Developing a Research sharing app with flutter,inventory managment system with mern stack",
+      date: "2022 - Present",
+      icon: ({ className }) => (
+        <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <div id="about" className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900/20 to-gray-900 py-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            About <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Me</span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            A passionate developer focused on creating impactful solutions through technology
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500/50 via-blue-400/50 to-blue-500/50" />
+
+          {/* Timeline items */}
+          <div className="space-y-8">
+            {timelineData.map((item, index) => (
+              <TimelineItem key={index} {...item} index={index} />
+            ))}
+          </div>
+        </div>
+
+        {/* Skills Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-20"
+        >
+          <h2 className="text-3xl font-bold text-white text-center mb-12">
+            Technical <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Skills</span>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              "JavaScript", "TypeScript", "React", "Node.js",
+              "MongoDB", "Express", "Python", "Machine Learning",
+              "Git", "Docker", "AWS", "TailwindCSS"
+            ].map((skill, index) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(0, 192, 255, 0.6), 0 0 50px rgba(0, 192, 255, 0.4)" }}
+                className="p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-blue-600/50 text-center cursor-pointer relative overflow-hidden group"
+              >
+                <span className="text-gray-300 relative z-10">{skill}</span>
+                <div className="absolute inset-0 bg-accent-blue/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/0 via-accent-blue/10 to-accent-blue/0 rounded-lg filter blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );

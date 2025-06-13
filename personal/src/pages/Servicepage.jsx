@@ -1,278 +1,172 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
-import { Code, Palette, Smartphone, Globe, Monitor, Terminal } from 'lucide-react';
-import { SiJavascript } from "react-icons/si";
-import { FaHtml5 } from "react-icons/fa";
-import { SiNodedotjs } from "react-icons/si";
-import { FaReact } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
-import { FaCss3Alt } from "react-icons/fa";
-import { FaPython } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa6";
-import { SiNextdotjs } from "react-icons/si";
-import { FaFigma } from "react-icons/fa";
-import { SiNestjs } from "react-icons/si";
-import { IoLogoFirebase } from "react-icons/io5";
+import { Code, Palette, Smartphone, Monitor, Terminal } from 'lucide-react';
+import { SiJavascript, SiTypescript, SiNodedotjs, SiNestjs, SiNextdotjs } from 'react-icons/si';
+import { FaReact, FaHtml5, FaCss3Alt, FaPython, FaGithub, FaFigma } from 'react-icons/fa';
+import { IoLogoFirebase } from 'react-icons/io5';
+import service1 from '../images/service_img1.avif';
+import service2 from '../images/service_img2.avif';
+import service3 from '../images/service_img3.avif';
+import service4 from '../images/service_img4.webp';
 
-import service1 from '../images/service1.webp'
-import service2 from '../images/service2.webp'
-import service3 from '../images/service3.webp'
-
-
-
-function ServicePage() {
-  const topListRef = useRef(null); 
-  const bottomListRef = useRef(null); 
-  const [selectedService, setSelectedService] = useState(null); 
-
-  useEffect(() => {
-    const topList = topListRef.current;
-    const bottomList = bottomListRef.current;
-    const topListWidth = topList.scrollWidth;
-    const bottomListWidth = bottomList.scrollWidth;
-
-    const topClone = topList.innerHTML;
-    const bottomClone = bottomList.innerHTML;
-    topList.innerHTML += topClone;
-    bottomList.innerHTML += bottomClone;
-
-    gsap.to(topList, {
-      x: -topListWidth,
-      duration: 40,
-      ease: 'linear',
-      repeat: -1,
-      onRepeat: () => {
-        gsap.set(topList, { x: 0 });
-      },
-    });
-
-    gsap.to(bottomList, {
-      x: -bottomListWidth,
-      duration: 45, // Make the second row duration slightly longer to create a lag
-      ease: 'linear',
-      repeat: -1,
-      onRepeat: () => {
-        gsap.set(bottomList, { x: 0 });
-      },
-    });
-  }, []);
-
-  // Handle service click
-  const handleServiceClick = (index) => {
-    if (selectedService === index) {
-      // If the same service is clicked again, reset the state
-      setSelectedService(null);
-    } else {
-      // Otherwise, set the clicked service as selected
-      setSelectedService(index);
-    }
-  };
+const ServiceCard = ({ title, description, image, icon: Icon, index }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div className='bg-gray-700 '>
- <div className="bg-gradient-to-b  from-gray-500 via-gray-400 to-gray-600 min-h-screen text-gray-100 flex flex-col items-center justify-center py-20 rounded-b-3xl">
-  <h1 className="text-5xl  font-extrabold text-white mb-16">Our Services</h1>
-
-  <div className="grid mb-24 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full max-w-7xl px-4">
- 
-    <div
-      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-        selectedService === 0 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
-      }`}
-      onClick={() => handleServiceClick(0)}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50, rotateX: 0, rotateY: 0 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 100, damping: 15 }}
+      whileHover={{ scale: 1.03, boxShadow: "0 15px 30px rgba(0, 192, 255, 0.2)", rotateX: 2, rotateY: -2 }}
+      className="group relative bg-white/10 backdrop-filter backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20 hover:border-accent-blue transition-all duration-300 transform perspective-1000"
     >
-      <div className="flex flex-col items-center justify-center">
-        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
-          <img src={service1} alt="Web Development" className="object-cover w-full h-full" />
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      <div className="p-6">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="p-3 bg-accent-blue/10 rounded-lg group-hover:bg-accent-blue/20 transition-colors">
+            <Icon className="w-6 h-6 text-accent-blue" />
+          </div>
+          <h3 className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors">
+            {title}
+          </h3>
         </div>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Development</h3>
-        <p className="text-gray-600 text-center">
-          Build dynamic, interactive, and scalable websites using the latest technologies like JavaScript and React.
-          Tech Stack: React.js, Next.js, Node.js, Express.js, MongoDB, SQL, Firebase, Tailwind CSS
-        </p>
+
+        <p className="text-gray-300">{description}</p>
+      </div>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/0 via-accent-blue/0 to-accent-blue/0 group-hover:from-accent-blue/5 group-hover:via-accent-blue/10 group-hover:to-accent-blue/5 transition-all duration-500" />
+    </motion.div>
+  );
+};
+
+const TechMarquee = ({ items, direction = "left" }) => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const containerWidth = container.scrollWidth;
+    const clone = container.innerHTML;
+    container.innerHTML += clone;
+
+    gsap.to(container, {
+      x: direction === "left" ? -containerWidth : containerWidth,
+      duration: 40,
+      ease: "linear",
+      repeat: -1,
+      onRepeat: () => {
+        gsap.set(container, { x: 0 });
+      }
+    });
+  }, [direction]);
+
+  return (
+    <div className="overflow-hidden py-4">
+      <div
+        ref={containerRef}
+        className="flex gap-12 w-max whitespace-nowrap"
+      >
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          >
+            {item.icon}
+            <span>{item.name}</span>
+          </div>
+        ))}
       </div>
     </div>
+  );
+};
 
+function ServicePage() {
+  const services = [
+    {
+      title: "Web Development",
+      description: "Build dynamic, interactive, and scalable websites using the latest technologies. From simple landing pages to complex web applications, I create solutions that meet your needs.",
+      image: service1,
+      icon: Code
+    },
+    {
+      title: "Web Design",
+      description: "Create visually stunning and user-friendly website layouts with a focus on usability and modern design principles. I ensure your website not only looks great but also provides an excellent user experience.",
+      image: service2,
+      icon: Palette
+    },
+    {
+      title: "App Development",
+      description: "Develop cross-platform mobile applications that provide seamless experiences across devices. Using modern frameworks and best practices to create performant and maintainable apps.",
+      image: service3,
+      icon: Smartphone
+    },
+    {
+      title: "Frontend Development",
+      description: "Create responsive and interactive user interfaces using modern frameworks and libraries. Focus on performance, accessibility, and user experience.",
+      image: service4,
+      icon: Monitor
+    },
+    {
+      title: "Backend Development",
+      description: "Build robust and scalable server-side solutions using Node.js and related technologies. Implement secure APIs, database management, and server infrastructure.",
+      image: service4,
+      icon: Terminal
+    }
+  ];
 
-    <div
-      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-        selectedService === 1 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
-      }`}
-      onClick={() => handleServiceClick(1)}
-    >
-      <div className="flex flex-col items-center justify-center">
-        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
-          <img src={service1} alt="Web Design" className="object-cover w-full h-full" />
-        </div>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Web Design</h3>
-        <p className="text-gray-600 text-center">
-          Create visually stunning and user-friendly website layouts, designs, and interfaces with a focus on usability.
-          Tech stack: Figma
-        </p>
-      </div>
-    </div>
+  const techItems = [
+    { icon: <SiJavascript className="text-yellow-500" size={24} />, name: "JavaScript" },
+    { icon: <SiTypescript className="text-blue-500" size={24} />, name: "TypeScript" },
+    { icon: <SiNestjs className="text-red-500" size={24} />, name: "Nest.js" },
+    { icon: <FaReact className="text-blue-400" size={24} />, name: "React.js" },
+    { icon: <SiNodedotjs className="text-green-500" size={24} />, name: "Node.js" },
+    { icon: <FaHtml5 className="text-orange-500" size={24} />, name: "HTML" },
+    { icon: <FaCss3Alt className="text-blue-500" size={24} />, name: "CSS" },
+    { icon: <FaGithub className="text-gray-800" size={24} />, name: "GitHub" },
+    { icon: <FaFigma className="text-purple-500" size={24} />, name: "Figma" },
+    { icon: <IoLogoFirebase className="text-yellow-500" size={24} />, name: "Firebase" },
+    { icon: <FaPython className="text-blue-500" size={24} />, name: "Python" },
+    { icon: <SiNextdotjs className="text-black" size={24} />, name: "Next.js" }
+  ];
 
- 
-    <div
-      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-        selectedService === 2 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
-      }`}
-      onClick={() => handleServiceClick(2)}
-    >
-      <div className="flex mb-10 flex-col items-center justify-center">
-        <div className="w-full  mb-6 h-40  overflow-hidden rounded-t-2xl">
-          <img src={service2} alt="App Development" className="object-cover w-full h-full" />
-        </div>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-2">App Development</h3>
-        <p className="text-gray-600 text-center">
-          Create mobile applications for Android and iOS, providing seamless experiences across devices and platforms.
-          Tech Stack: Flutter (Dart), Firebase, Node.js, Express.js, MongoDB, REST APIs
-        </p>
-      </div>
-    </div>
-
-   
-    <div
-      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-        selectedService === 3 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
-      }`}
-      onClick={() => handleServiceClick(3)}
-    >
-      <div className="flex flex-col items-center justify-center">
-        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
-          <img src={service3} alt="Frontend Development" className="object-cover w-full h-full" />
-        </div>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Frontend Development</h3>
-        <p className="text-gray-600 text-center">
-          Creating visually stunning, user-friendly, and high-performance interfaces that engage users and enhance their experience.
-          Tech stack: HTML, CSS, JavaScript, React.js, Next.js, Tailwind CSS, Redux, TypeScript
-        </p>
-      </div>
-    </div>
-
- 
-    <div
-      className={`transition-all duration-500 ease-in-out bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer transform ${
-        selectedService === 4 ? 'transform scale-110 z-10' : selectedService !== null ? 'opacity-50 grayscale transform scale-90' : ''
-      }`}
-      onClick={() => handleServiceClick(4)}
-    >
-      <div className="flex flex-col items-center justify-center">
-        <div className="w-full h-40 mb-6 overflow-hidden rounded-t-2xl">
-          <img src={service3} alt="Backend Development" className="object-cover w-full h-full" />
-        </div>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Backend Development</h3>
-        <p className="text-gray-600 text-center">
-          Crafting robust, secure, and scalable server-side solutions to power modern web applications.
-          Tech stack: Node.js, Express.js, Nest.js, MongoDB, SQL, Redis, Firebase
-        </p>
-      </div>
-    </div>
-  
-
-
-
-
-      
-
-        
-    
-      </div>
-
-
-
-
-      <div className="mb-3 overflow-hidden">
-        <ul
-          ref={topListRef}
-          className="flex gap-12 w-max whitespace-nowrap"
+  return (
+    <div id="services" className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900/20 to-gray-900">
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <li className="flex items-center gap-2">
-            <SiJavascript className="text-yellow-500" style={{ fontSize: '2rem' }} /> JavaScript
-          </li>
-          <li className="flex items-center gap-2">
-            <SiTypescript className="text-blue-500" style={{ fontSize: '2rem' }} /> TypeScript
-          </li>
-          <li className="flex items-center gap-2">
-            <SiNestjs className="text-red-500" style={{ fontSize: '2rem' }} /> Nest.js
-          </li>
-          <li className="flex items-center gap-2">
-            <FaReact className="text-blue-400" style={{ fontSize: '2rem' }} /> React.js
-          </li>
-          <li className="flex items-center gap-2">
-            <SiNodedotjs className="text-green-500" style={{ fontSize: '2rem' }} /> Node.js
-          </li>
-          <li className="flex items-center gap-2">
-            <FaHtml5 className="text-orange-500" style={{ fontSize: '2rem' }} /> HTML
-          </li>
-          <li className="flex items-center gap-2">
-            <FaCss3Alt className="text-blue-500" style={{ fontSize: '2rem' }} /> CSS
-          </li>
-          <li className="flex items-center gap-2">
-            <FaGithub className="text-gray-800" style={{ fontSize: '2rem' }} /> GitHub
-          </li>
-          <li className="flex items-center gap-2">
-            <FaFigma className="text-purple-500" style={{ fontSize: '2rem' }} /> Figma
-          </li>
-          <li className="flex items-center gap-2">
-            <IoLogoFirebase className="text-yellow-500" style={{ fontSize: '2rem' }} /> Firebase
-          </li>
-          <li className="flex items-center gap-2">
-            <FaPython className="text-blue-500" style={{ fontSize: '2rem' }} /> Python
-          </li>
-          <li className="flex items-center gap-2">
-            <SiNextdotjs className="text-black" style={{ fontSize: '2rem' }} /> Next.js
-          </li>
-        </ul>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            My <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Services</span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Comprehensive web development and design solutions tailored to your needs
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} {...service} index={index} />
+          ))}
+        </div>
+
+        <div className="mt-20 space-y-4">
+          <TechMarquee items={techItems} direction="left" />
+          <TechMarquee items={techItems} direction="right" />
+        </div>
       </div>
-
-      <div className="mb-20 overflow-hidden">
-        <ul
-          ref={bottomListRef}
-          className="flex gap-5 w-max whitespace-nowrap"
-        >
-          <li className="flex items-center gap-2">
-            <SiJavascript className="text-yellow-500" style={{ fontSize: '2rem' }} /> JavaScript
-          </li>
-          <li className="flex items-center gap-2">
-            <SiTypescript className="text-blue-500" style={{ fontSize: '2rem' }} /> TypeScript
-          </li>
-          <li className="flex items-center gap-2">
-            <SiNestjs className="text-red-500" style={{ fontSize: '2rem' }} /> Nest.js
-          </li>
-          <li className="flex items-center gap-2">
-            <FaReact className="text-blue-400" style={{ fontSize: '2rem' }} /> React.js
-          </li>
-          <li className="flex items-center gap-2">
-            <SiNodedotjs className="text-green-500" style={{ fontSize: '2rem' }} /> Node.js
-          </li>
-          <li className="flex items-center gap-2">
-            <FaHtml5 className="text-orange-500" style={{ fontSize: '2rem' }} /> HTML
-          </li>
-          <li className="flex items-center gap-2">
-            <FaCss3Alt className="text-blue-500" style={{ fontSize: '2rem' }} /> CSS
-          </li>
-          <li className="flex items-center gap-2">
-            <FaGithub className="text-gray-800" style={{ fontSize: '2rem' }} /> GitHub
-          </li>
-          <li className="flex items-center gap-2">
-            <FaFigma className="text-purple-500" style={{ fontSize: '2rem' }} /> Figma
-          </li>
-          <li className="flex items-center gap-2">
-            <IoLogoFirebase className="text-yellow-500" style={{ fontSize: '2rem' }} /> Firebase
-          </li>
-          <li className="flex items-center gap-2">
-            <FaPython className="text-blue-500" style={{ fontSize: '2rem' }} /> Python
-          </li>
-          <li className="flex items-center gap-2">
-            <SiNextdotjs className="text-black" style={{ fontSize: '2rem' }} /> Next.js
-          </li>
-        </ul>
-      </div>
-
-      
-
-    </div>
     </div>
   );
 }
