@@ -65,7 +65,7 @@ function AboutPage() {
     {
       title: "Full Stack Developer at Nile Technology",
       description: "Developing a full stack school managment system with mern stack",
-      date: "2023 - Present",
+      date: "2025 - present",
       icon: ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -75,7 +75,7 @@ function AboutPage() {
     {
       title: "Academic project",
       description: "Developing a Research sharing app with flutter,inventory managment system with mern stack",
-      date: "2022 - Present",
+      date: "2025 - Present",
       icon: ({ className }) => (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -126,8 +126,8 @@ function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
               "JavaScript", "TypeScript", "React", "Node.js",
-              "MongoDB", "Express", "Python", "Machine Learning",
-              "Git", "Docker", "AWS", "TailwindCSS"
+              "MongoDB", "Express", "Python", "C",
+              "Git", "Next js", "Flutter", "TailwindCSS","Kotlin","Github","Figma"
             ].map((skill, index) => (
               <motion.div
                 key={skill}

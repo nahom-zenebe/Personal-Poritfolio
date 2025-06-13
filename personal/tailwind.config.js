@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'accent-blue': '#00C0FF', // A vibrant blue for accents
+        'accent-blue': '#00C8FF',
+      },
+      animation: {
+        'pulse-slow': 'pulse 4s ease-in-out infinite',
       },
     },
   },
