@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaHome, FaInfoCircle, FaBriefcase, FaWrench } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaBriefcase, FaWrench, FaUserTie } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 function Navbar() {
@@ -11,7 +11,7 @@ function Navbar() {
       setIsScrolled(window.scrollY > 50);
 
       // Determine active section based on scroll position
-      const sections = ['home', 'about', 'projects', 'services', 'footer'];
+      const sections = ['home', 'about', 'experience', 'projects', 'services', 'footer'];
       for (const sectionId of sections) {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -30,6 +30,7 @@ function Navbar() {
   const navItems = [
     { path: '#home', icon: FaHome, label: 'Home', id: 'home' },
     { path: '#about', icon: FaInfoCircle, label: 'About', id: 'about' },
+    { path: '#experience', icon: FaUserTie, label: 'Experience', id: 'experience' },
     { path: '#projects', icon: FaBriefcase, label: 'Projects', id: 'projects' },
     { path: '#services', icon: FaWrench, label: 'Services', id: 'services' },
   ];

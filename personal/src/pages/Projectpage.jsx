@@ -197,9 +197,9 @@ const ProjectModal = ({ project, onClose }) => {
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+          className="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-900/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-red-400 hover:bg-gray-800 transition-all duration-300 border border-gray-700/50"
         >
-          <FaTimes className="w-6 h-6" />
+          <FaTimes className="w-5 h-5" />
         </button>
 
         <div className="p-6">
@@ -213,7 +213,7 @@ const ProjectModal = ({ project, onClose }) => {
           </div>
 
           <h2 className="text-3xl font-bold text-white mb-4">{project.title}</h2>
-          <p className="text-gray-300 mb-6">{project.description}</p>
+          <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
 
           <div className="mb-6">
             <h3 className="text-xl font-semibold text-blue-400 mb-3">Technologies Used</h3>
@@ -221,7 +221,7 @@ const ProjectModal = ({ project, onClose }) => {
               {project.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm"
+                  className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm border border-blue-500/20"
                 >
                   {tech.name}
                 </span>
@@ -234,20 +234,22 @@ const ProjectModal = ({ project, onClose }) => {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all duration-300 hover:scale-105"
             >
               <FaGithub className="w-5 h-5" />
               View Code
             </a>
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              <FaExternalLinkAlt className="w-5 h-5" />
-              Live Demo
-            </a>
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 hover:scale-105"
+              >
+                <FaExternalLinkAlt className="w-5 h-5" />
+                Live Demo
+              </a>
+            )}
           </div>
         </div>
       </motion.div>

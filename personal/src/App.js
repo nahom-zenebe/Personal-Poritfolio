@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import Projectpage from "./pages/Projectpage";
 import Aboutpage from "./pages/Aboutpage";
+import Experiencepage from "./pages/Experiencepage";
 import Servicepage from "./pages/Servicepage";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
@@ -20,6 +21,7 @@ function App() {
           <Navbar />
           <Homepage />
           <Aboutpage />
+          <Experiencepage />
           <Projectpage />
           <Servicepage />
           <Footer />
