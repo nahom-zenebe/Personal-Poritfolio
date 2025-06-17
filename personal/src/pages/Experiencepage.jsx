@@ -28,7 +28,7 @@ const Experiencepage = () => {
     {
       id: 2,
       company: "Self employee",
-      position: "Open source contiribtor",
+      position: "Open source contributor",
       duration: "2025 nov- present",
       location: "Remote",
       tasks: [

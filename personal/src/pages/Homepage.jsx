@@ -476,7 +476,7 @@ const Homepage = () => {
             )}
           </motion.div>
 
-          <motion.div className="flex flex-wrap gap-4 mt-8 justify-center" variants={fadeInUp}>
+          <motion.div className="flex  flex-wrap gap-4 mt-12 justify-center" variants={fadeInUp}>
             <motion.a
               href="https://www.linkedin.com/in/nahom-z-467a27338/"
               target="_blank"
