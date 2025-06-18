@@ -489,7 +489,7 @@ const Homepage = () => {
             </motion.a>
 
             <motion.a
-              href="../public/Resume.pdf"
+              href="/Resume.pdf"
               download
               whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 20px rgba(100, 100, 100, 0.4)" }}
               whileTap={{ scale: 0.95 }}

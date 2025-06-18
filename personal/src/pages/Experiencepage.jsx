@@ -48,8 +48,8 @@ const Experiencepage = () => {
       tasks: [
         "Developed School management system",
         "led a team of 5 to build project",
-        "Learn alot of tools",
-        "wokring a using srcum method"
+        "Learn alot of tools and framework",
+        "working a using srcum method"
       ],
       tools: ["node", "React", "express","mongodb", "Git", "scrum", "Figma", "Postman"]
     },

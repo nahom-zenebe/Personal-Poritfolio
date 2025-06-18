@@ -7,6 +7,7 @@ import { FaReact, FaNodeJs, FaAws, FaCss3Alt, FaHtml5 } from 'react-icons/fa';
 import service1 from '../images/service1.webp';
 import project1 from '../images/project-1.png';
 import project2 from '../images/project-2.png';
+import project3 from '../images/Project-3.png';
 import project4 from '../images/project-4.jpg';
 
 // ProjectModal and ProjectCard components remain unchanged
@@ -29,7 +30,7 @@ function Portfolio() {
         { icon: SiTailwindcss, name: "Tailwind CSS" }
       ],
       github: "https://github.com/username/prison-management",
-      live: "https://prison-management-demo.com"
+      live: "https://prison-managment-system.vercel.app"
     },
     {
       title: "Inventory Management System",
@@ -43,12 +44,12 @@ function Portfolio() {
         { icon: FaAws, name: "AWS" }
       ],
       github: "https://github.com/username/inventory-system",
-      live: "https://inventory-system-demo.com"
+      live: "https://advanced-inventory-management-system.vercel.app/"
     },
     {
       title: "Intellireview research paper",
       description: "Flutter based app that allow user to search,boomark,saved and share research paper",
-      image: service1,
+      image: project3,
       technologies: [
         { icon: FaReact, name: "Flutter" },
         { icon: SiTailwindcss, name: "Dart" },
