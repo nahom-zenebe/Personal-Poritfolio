@@ -35,6 +35,8 @@ const TypingAnimation = ({ text, speed = 100 }) => {
     }
   }, [currentIndex, text, speed]);
 
+  
+
   return (
     <span className="inline-block">
       {displayText}
