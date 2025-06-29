@@ -9,6 +9,8 @@ import project1 from '../images/project-1.png';
 import project2 from '../images/project-2.png';
 import project3 from '../images/Project-3.png';
 import project4 from '../images/project-4.jpg';
+import project5 from '../images/project-5.png';
+import { SiNextdotjs, SiMongodb, SiPrisma, SiStripe, SiJavascript } from "react-icons/si";
 
 // ProjectModal and ProjectCard components remain unchanged
 
@@ -17,6 +19,24 @@ function Portfolio() {
 
   // Projects data remains the same (for reference and modal)
   const projects = [
+    {
+      title: "Car Dealership",
+      description: "A full-stack car dealership web application built with Next.js, Prisma ORM, and MongoDB. It features a sleek API-driven backend with CRUD operations for cars, customers, and sales, a shopping cart, user authentication, and Stripe payment integration",
+      image: project5,
+      technologies: [
+        { icon: SiNextdotjs, name: "Next.js" },
+        { icon: FaNodeJs, name: "Node.js" },
+        { icon: SiTypescript, name: "TypeScript" },
+        { icon: SiMongodb, name: "MongoDB" },
+        { icon: SiPrisma, name: "Prisma" },
+        { icon: SiCloudinary, name: "Cloudinary" },
+        { icon: SiStripe, name: "Stripe" },
+        { icon: SiTailwindcss, name: "Tailwind CSS" },
+        { icon: SiJavascript, name: "JavaScript" },
+      ],
+      github: "https://github.com/nahom-zenebe/Car_Dealership_web_app",
+      live: "https://car-dealership-web-app.vercel.app"
+    },
     {
       title: "Prison Management System",
       description: "A comprehensive prison management system for Akaki Federal police prison, featuring inmate tracking, visitor management, and reporting capabilities.",
@@ -113,6 +133,12 @@ function Portfolio() {
           <ProjectCard
             project={projects[3]}
             index={3}
+            onOpen={setSelectedProject}
+          />
+
+            <ProjectCard
+            project={projects[4]}
+            index={4}
             onOpen={setSelectedProject}
           />
 
